@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="drum.css" />
+    <title>Drum kit</title>
+  </head>
+  <body>
+   
+    <h1></b> RAZZESH  DRUM BAND<b></h1>
+    
+    <div class="container"> <center>
+      <div class="key"  data-key="65"><kbd>A</kbd></div>
+      <div class="key" data-key="83"><kbd>S</kbd></div>
+      <div class="key" data-key="68"><kbd>D</kbd></div>
+      <div class="key" data-key="70"><kbd>F</kbd></div>
+      <div class="key" data-key="71"><kbd>G</kbd></div>
+      <div class="key" data-key="72"><kbd>H</kbd></div>
+      <div class="key" data-key="74"><kbd>J</kbd></div>
+   
+    </center>
+    </div>
+    <audio  data-key="65" src="sounds\mixkit-fast-impact-blow-2655.wav"></audio>
+    <audio  data-key="83" src="sounds\mixkit-game-show-wrong-answer-buzz-950.wav"></audio>
+    <audio  data-key="68"  src="sounds\mixkit-flute-cell-phone-alert-2315.wav"></audio>
+    <audio  data-key="70"src="sounds\mixkit-happy-guitar-chords-2319.wav"></audio>
+    <audio data-key="71" src="sounds\mixkit-deep-dark-horror-drum-557.wav"></audio>
+    <audio  data-key="72"src="D:\html\sounds\mixkit-ominous-drums-appear-228.wav"></audio>
+    <audio  data-key="74"src="D:\html\sounds\mixkit-joke-drums-578.wav"></audio>
+  
+
+
+    <script >
+        window.addEventListener("keydown",(e)=>
+        {
+        var audio=document.querySelector(`audio[data-key="${e.keyCode}"]`);
+        console.log(audio);
+        
+        var num=document.querySelector(`.key[data-key="${e.keyCode}"]`);
+        num.classList.add("playing");
+        if(audio)
+        {
+        audio.play();
+        audio.currentTime=0;
+        }
+        var back=document.querySelectorAll(".key");
+        back.forEach((e)=>
+        {
+          e.addEventListener("transitionend",  function(){num.classList.remove("playing")});
+        })
+        
+
+        return 
+      }
+      
+)
+
+
+
+
+    </script>
+  </body>
+
+</html>
